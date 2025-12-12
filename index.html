@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر مارو - سيرفر ماينكرافت</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="background-gif-container">
+    <div class="blur-overlay"></div>
+  </div>
+
+  <header>
+    <nav class="main-navbar">
+        <div class="nav-center-content">
+            <div class="nav-links">
+                <button class="tab" data-target="home">رئيسية</button>
+                <button class="tab" data-target="houses">المنازل</button>
+                <button class="tab" data-target="tools">الأدوات</button>
+                <button class="tab" data-target="ranks">الرتب</button>
+                <button class="tab" data-target="claims">الكليم</button>
+                <button class="tab" data-target="chests">صناديق</button> 
+                <button class="tab" data-target="add_product">إضافة منتج</button>
+            </div>
+            <input type="text" id="search-input" placeholder="🔍 بحث سريع..." class="search-in-nav" />
+        </div>
+    </nav>
+
+    <h1 class="welcome-title">مرحباً بك في متجر مارو! 🌟</h1>
+    <p class="server-desc">
+      سيرفر ماينكرافت مميز يقدم لك تجربة لعب ممتعة ومليئة بالمغامرات! اكتشف المنازل الرائعة، الأدوات القوية، العملات، الرتب المميزة، والكليم المثير. كل شيء مصمم لتسهيل اللعب وجعل التجربة أكثر متعة لجميع اللاعبين.
+    </p>
+  </header>
+
+  <main>
+    <section id="content"></section>
+  </main>
+
+  <!-- نافذة إضافة المنتج -->
+  <div id="add-product-modal" class="modal">
+    <div class="modal-content">
+      <h2>إضافة منتج جديد</h2>
+      <form id="add-product-form">
+        <input type="text" id="product-title" placeholder="اسم المنتج" required>
+        <textarea id="product-description" placeholder="وصف المنتج" required></textarea>
+        <input type="text" id="product-price" placeholder="السعر" required>
+        <input type="text" id="product-manager" placeholder="اسم مدير المنتج" required>
+        <select id="product-category" required>
+          <option value="">اختر الفئة</option>
+          <option value="houses">المنازل</option>
+          <option value="tools">الأدوات</option>
+          <option value="ranks">الرتب</option>
+          <option value="claims">الكليم</option>
+          <option value="chests">الصناديق</option>
+        </select>
+        <input type="url" id="main-image" placeholder="رابط الصورة الأساسية" required>
+        <input type="text" id="inner-images" placeholder="روابط الصور الداخلية مفصولة بفواصل" required>
+        <div class="modal-buttons">
+          <button type="button" id="cancel-add">إلغاء</button>
+          <button type="submit">استكمال</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
