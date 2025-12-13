@@ -1,86 +1,231 @@
+/* ---------------------------------------------------- */
+/* 1. خلفية GIF + التمويه */
+/* ---------------------------------------------------- */
 .background-gif-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  background-image: url('https://66.media.tumblr.com/2377dc353fee72343dc776d5ea9dcd0b/tumblr_pgyujn9pok1xioyvwo3_540.gif');
-  background-size: cover;
-  background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: url('https://i.gifer.com/embedded/download/V6vs.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .blur-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(31, 41, 55, 0.7);
-  backdrop-filter: blur(6px);
-  z-index: -1;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+    pointer-events: none !important; /* مهم جداً */
 }
 
+/* ---------------------------------------------------- */
+/* 2. الإعدادات العامة */
+/* ---------------------------------------------------- */
 body {
   font-family: 'Cairo', sans-serif;
   margin: 0;
   padding-top: 60px;
-  color: #fff;
+  background-color: transparent;
+  color: #f9fafb;
+  text-align: center;
+}
+
+/* ---------------------------------------------------- */
+/* 3. شريط التنقل */
+/* ---------------------------------------------------- */
+header {
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+  margin-bottom: 30px;
+}
+
+.welcome-title {
+    margin: 40px 0 10px 0;
+    font-size: 2.5em;
+}
+
+.server-desc {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+    font-size: 1.1em;
+    line-height: 1.6;
 }
 
 .main-navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 60px;
-  background: rgba(17,24,39,0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(17, 24, 39, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    z-index: 9999 !important; /* أهم سطر */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    backdrop-filter: blur(5px);
 }
 
-.tab {
-  background: none;
-  border: none;
-  color: #fff;
-  margin: 0 8px;
-  font-size: 16px;
-  cursor: pointer;
+.main-navbar * {
+    z-index: 9999 !important; /* لضمان الضغط يعمل */
 }
 
-.tab-active {
-  color: gold;
-  border-bottom: 2px solid gold;
+.nav-center-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.main-navbar button.tab {
+    padding: 10px 15px;
+    border: none;
+    background: transparent;
+    color: #f9fafb;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.main-navbar button.tab:hover {
+    color: #4CAF50;
+}
+
+.tab-active { 
+  color: #FFD700 !important;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  border-bottom: 2px solid #FFD700;
+}
+
+/* ---------------------------------------------------- */
+/* 4. البحث */
+/* ---------------------------------------------------- */
+.search-in-nav {
+    width: 200px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid #4B5563;
+    background-color: #374151;
+    color: #fff;
+    font-size: 14px;
+}
+
+.search-in-nav::placeholder {
+    color: #9CA3AF;
+}
+
+/* ---------------------------------------------------- */
+/* 5. المنتجات */
+/* ---------------------------------------------------- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 #content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 25px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
 }
 
 .product-card {
-  background: #374151;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
+    background-color: #374151;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
 }
 
 .product-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 4px solid transparent;
 }
 
 .product-info {
-  padding: 15px;
-  text-align: right;
+    padding: 15px;
+    text-align: right;
 }
 
-.home-box {
-  background: rgba(31,41,55,0.8);
-  padding: 40px;
-  border-radius: 15px;
+.product-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2em;
+}
+
+.product-info p {
+    color: #FBBF24;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* ألوان حسب التصنيف */
+.product-card.houses img { border-color: #7CFC00; }
+.product-card.tools img { border-color: #1E90FF; }
+.product-card.ranks img { border-color: #DA70D6; }
+.product-card.claims img { border-color: #FFD700; }
+.product-card.chests img { border-color: #8A2BE2; }
+
+/* ---------------------------------------------------- */
+/* 6. صفحة التفاصيل */
+/* ---------------------------------------------------- */
+.product-details-page {
+    background-color: rgba(31, 41, 55, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.back-button {
+    background-color: transparent;
+    color: #FFD700;
+    border: 1px solid #FFD700;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+.buy-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.buy-button:hover {
+    background-color: #45a049;
 }
