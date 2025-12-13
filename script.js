@@ -1,8 +1,9 @@
 const tabs = document.querySelectorAll(".tab");
 const content = document.getElementById("content");
-const searchInput = document.getElementById("search-input");
-let currentCategory = "home";
+const searchInput = document.getElementById("search-input"); 
+let currentCategory = "home"; 
 
+// البيانات
 const data = {
   houses: [
     {name:"house1", ext:"webp", desc:"بيت عملي وكبير، مناسب للعمل الجماعي وفِرق الاستكشاف", price:"10 ألف كريديت"},
@@ -29,68 +30,143 @@ const data = {
     {name:"cliam", ext:"jpg", desc:"1000 بلوكة", price:"10 آلاف كريديت"}
   ],
   chests: [
-    {name:"chastes", ext:"jpg", desc:"صندوق ذو مزايا عشوائية", price:"50 ألف كريديت"}
+    {name:"chastes", ext:"jpg", desc:"صندوق ذو مزايا عشوائية", price:"50 ألف كريديت"} 
   ]
 };
 
-function createProductCard(item, category) {
-  const card = document.createElement("div");
-  card.className = `product-card ${category}`;
+// دالة عرض صفحة تفاصيل المنتج
+function showProductDetailsPage(item, category) {
+    searchInput.style.visibility = 'hidden'; 
+    content.innerHTML = ""; 
 
-  card.innerHTML = `
-    <img src="images/${item.name}.${item.ext}">
-    <div class="product-info">
-      <h3>${item.desc}</h3>
-      <p>${item.price}</p>
-    </div>
-  `;
+    const detailsContainer = document.createElement("div");
+    detailsContainer.className = "product-details-page";
+    detailsContainer.style.textAlign = 'center';
 
-  return card;
+    const backButton = document.createElement('button');
+    backButton.textContent = '← العودة إلى القائمة';
+    backButton.className = 'back-button';
+    backButton.onclick = () => showCategory(category);
+    
+    const largeImg = document.createElement("img");
+    largeImg.src = `images/${item.name}.${item.ext}`;
+    largeImg.alt = item.name;
+    largeImg.style.maxWidth = '100%';
+    largeImg.style.maxHeight = '400px';
+    largeImg.style.borderRadius = '15px';
+    largeImg.style.margin = '20px auto';
+    largeImg.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
+
+    const displayName = (category === 'chests') ? item.desc : (item.name.charAt(0).toUpperCase() + item.name.slice(1).replace(/([a-zA-Z]+)(\d+)/, '$1 $2'));
+    
+    let detailsDesc = item.desc;
+    if (category === 'chests') {
+        detailsDesc = "صندوق يحتوي على مزايا نادرة أو أدوات قوية عشوائية بقيمة تفوق سعر الشراء!";
+    }
+
+    const infoHtml = 
+        `<h2 style="color: #FFD700;">${displayName}</h2>
+        <p style="font-size: 1.2em; max-width: 600px; margin: 0 auto 20px auto;">${detailsDesc}</p>
+        <p style="font-size: 1.5em; font-weight: bold; color: #7CFC00;">السعر: ${item.price}</p>
+        <button class="buy-button">طلب الشراء (تواصل معنا)</button>`;
+
+    detailsContainer.appendChild(backButton);
+    detailsContainer.appendChild(largeImg);
+    detailsContainer.innerHTML += infoHtml; 
+
+    content.appendChild(detailsContainer);
 }
 
+// دالة إنشاء بطاقة المنتج
+function createProductCard(item, category) {
+    const card = document.createElement("div");
+    card.className = `product-card ${category}`; 
+
+    const img = document.createElement("img");
+    img.src = `images/${item.name}.${item.ext}`;
+    img.alt = item.name;
+    img.loading = "lazy"; 
+
+    const info = document.createElement("div");
+    info.className = "product-info";
+    
+    const displayName = (category === 'chests') ? item.desc : (item.name.charAt(0).toUpperCase() + item.name.slice(1).replace(/([a-zA-Z]+)(\d+)/, '$1 $2'));
+    
+    info.innerHTML = `<h3>${displayName}</h3><p>${item.price}</p>`;
+    
+    card.appendChild(img);
+    card.appendChild(info);
+
+    card.onclick = () => {
+        showProductDetailsPage(item, category);
+    };
+    
+    return card;
+}
+
+// عرض الفئة
 function renderProducts(products, cat) {
-  content.innerHTML = "";
-  products.forEach(item => {
-    content.appendChild(createProductCard(item, cat));
-  });
+    content.innerHTML = "";
+    if (products.length === 0) {
+        content.innerHTML = `<p style="text-align: center; margin-top: 50px;">عذراً، لم يتم العثور على منتجات مطابقة في فئة ${cat} هذه.</p>`;
+        return;
+    }
+    products.forEach(item => {
+        content.appendChild(createProductCard(item, cat));
+    });
 }
 
 function showCategory(cat) {
-  currentCategory = cat;
-  searchInput.value = "";
-  searchInput.style.visibility = (cat === "home") ? "hidden" : "visible";
+    currentCategory = cat;
+    searchInput.value = ''; 
 
-  if (cat === "home") {
-    content.innerHTML = `
-      <div class="home-box">
-        <h2>التواصل والدعم الفني</h2>
-        <p>للتواصل معنا افتح تذكرة على ديسكورد</p>
-        <a href="https://discord.com/channels/1426180827011743757/1449037953341984768" target="_blank">
-          فتح تذكرة
-        </a>
-      </div>
-    `;
-    return;
-  }
+    searchInput.style.visibility = (cat === 'home') ? 'hidden' : 'visible'; 
 
-  renderProducts(data[cat], cat);
+    if (cat === 'home') {
+        content.innerHTML = 
+            `<div style="text-align: center; padding: 50px 20px; max-width: 600px; margin: 50px auto; background-color: rgba(31, 41, 55, 0.8); border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+                <h2 style="color: #FFD700; margin-bottom: 30px;">التواصل والدعم الفني</h2>
+                <p style="font-size: 1.5em; margin-bottom: 30px; line-height: 1.6;">
+                    للتواصل معنا تعال هنا و اتفح تكت
+                </p>
+                <a href="https://discord.com/channels/1426180827011743757/1449037953341984768" 
+                   target="_blank" 
+                   style="display: inline-block; padding: 15px 30px; background-color: #5865F2; color: white; border-radius: 8px; text-decoration: none; font-size: 1.2em; font-weight: bold; transition: background-color 0.2s;">
+                   انقر هنا لفتح تذكرة على ديسكورد
+                </a>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #ccc;">(يفتح الرابط في نافذة جديدة)</p>
+            </div>`;
+        return;
+    }
+    
+    renderProducts(data[cat], cat);
 }
 
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("tab-active"));
+// البحث
+function filterProducts() {
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    if (currentCategory === 'home') return; 
+    
+    const filteredProducts = data[currentCategory].filter(item => {
+        const nameMatch = item.name.toLowerCase().includes(searchTerm);
+        const descMatch = item.desc.toLowerCase().includes(searchTerm);
+        return nameMatch || descMatch;
+    });
+    
+    renderProducts(filteredProducts, currentCategory);
+}
+
+// مستمعات الأحداث
+tabs.forEach(tab=>{
+  tab.addEventListener("click", ()=>{
+    tabs.forEach(t=>t.classList.remove("tab-active"));
     tab.classList.add("tab-active");
     showCategory(tab.dataset.target);
   });
 });
 
-searchInput.addEventListener("input", () => {
-  const term = searchInput.value.toLowerCase();
-  const filtered = data[currentCategory].filter(i =>
-    i.desc.toLowerCase().includes(term)
-  );
-  renderProducts(filtered, currentCategory);
-});
+searchInput.addEventListener("input", filterProducts);
 
-showCategory("home");
-document.querySelector('[data-target="home"]').classList.add("tab-active");
+showCategory('home');
+document.querySelector('button[data-target="home"]').classList.add("tab-active");
