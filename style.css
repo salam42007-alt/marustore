@@ -42,14 +42,19 @@ body {
 /* 3. شريط التنقل */
 /* ---------------------------------------------------- */
 header {
-  padding: 0;
-  background-color: transparent;
-  box-shadow: none;
-  margin-bottom: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    margin-bottom: 0;
+    text-align: center;
 }
 
 .welcome-title {
-    margin: 40px 0 10px 0;
+    margin: 0 0 10px 0;
     font-size: 2.5em;
 }
 
@@ -78,7 +83,7 @@ header {
 }
 
 .main-navbar * {
-    z-index: 9999 !important; /* لضمان الضغط يعمل */
+    z-index: 9999 !important;
 }
 
 .nav-center-content {
@@ -113,9 +118,7 @@ header {
   border-bottom: 2px solid #FFD700;
 }
 
-/* ---------------------------------------------------- */
-/* 4. البحث */
-/* ---------------------------------------------------- */
+/* البحث */
 .search-in-nav {
     width: 200px;
     padding: 8px 15px;
@@ -130,9 +133,7 @@ header {
     color: #9CA3AF;
 }
 
-/* ---------------------------------------------------- */
-/* 5. المنتجات */
-/* ---------------------------------------------------- */
+/* المنتجات */
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -190,9 +191,7 @@ main {
 .product-card.claims img { border-color: #FFD700; }
 .product-card.chests img { border-color: #8A2BE2; }
 
-/* ---------------------------------------------------- */
-/* 6. صفحة التفاصيل */
-/* ---------------------------------------------------- */
+/* صفحة التفاصيل */
 .product-details-page {
     background-color: rgba(31, 41, 55, 0.5);
     border-radius: 15px;
