@@ -45,27 +45,6 @@ header {
     position: relative;
 }
 
-.welcome-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.welcome-title {
-    margin: 0 0 10px 0;
-    font-size: 2.5em;
-}
-
-.server-desc {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px 20px 20px;
-    font-size: 1.1em;
-    line-height: 1.6;
-}
-
 .main-navbar {
     position: fixed;
     top: 0;
@@ -118,7 +97,9 @@ header {
   border-bottom: 2px solid #FFD700;
 }
 
-/* البحث */
+/* ---------------------------------------------------- */
+/* 4. البحث */
+/* ---------------------------------------------------- */
 .search-in-nav {
     width: 200px;
     padding: 8px 15px;
@@ -133,7 +114,33 @@ header {
     color: #9CA3AF;
 }
 
-/* المنتجات */
+/* ---------------------------------------------------- */
+/* 5. الترحيب في منتصف الشاشة */
+/* ---------------------------------------------------- */
+.welcome-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.welcome-title {
+    margin: 0 0 10px 0;
+    font-size: 2.5em;
+}
+
+.server-desc {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* ---------------------------------------------------- */
+/* 6. المنتجات */
+/* ---------------------------------------------------- */
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -191,7 +198,9 @@ main {
 .product-card.claims img { border-color: #FFD700; }
 .product-card.chests img { border-color: #8A2BE2; }
 
-/* صفحة التفاصيل */
+/* ---------------------------------------------------- */
+/* 7. صفحة التفاصيل */
+/* ---------------------------------------------------- */
 .product-details-page {
     background-color: rgba(31, 41, 55, 0.5);
     border-radius: 15px;
