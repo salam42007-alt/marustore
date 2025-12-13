@@ -132,7 +132,7 @@ header {
 
 /* غيّرنا الاسم هنا */
 .welcome-title::before {
-    content: "مرحباً بك في متجر بيكل كرافت! 🌟";
+    content: "🌟";
 }
 
 .server-desc {
@@ -242,3 +242,4 @@ main {
 .buy-button:hover {
     background-color: #45a049;
 }
+
