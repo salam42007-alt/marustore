@@ -8,24 +8,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+  
   <div class="background-gif-container">
     <div class="blur-overlay"></div>
   </div>
 
   <header>
     <nav class="main-navbar">
-      <div class="nav-center-content">
-        <div class="nav-links">
-          <button class="tab" data-target="home">رئيسية</button>
-          <button class="tab" data-target="houses">المنازل</button>
-          <button class="tab" data-target="tools">الأدوات</button>
-          <button class="tab" data-target="ranks">الرتب</button>
-          <button class="tab" data-target="claims">الكليم</button>
-          <button class="tab" data-target="chests">صناديق</button>
+        <div class="nav-center-content">
+            <div class="nav-links">
+                <button class="tab" data-target="home">رئيسية</button>
+                <button class="tab" data-target="houses">المنازل</button>
+                <button class="tab" data-target="tools">الأدوات</button>
+                <button class="tab" data-target="ranks">الرتب</button>
+                <button class="tab" data-target="claims">الكليم</button>
+                <button class="tab" data-target="chests">صناديق</button> 
+            </div>
+            <input type="text" id="search-input" placeholder="🔍 بحث سريع..." class="search-in-nav" />
         </div>
-        <input type="text" id="search-input" placeholder="🔍 بحث سريع..." class="search-in-nav" />
-      </div>
     </nav>
 
     <h1 class="welcome-title">مرحباً بك في متجر كينزو! 🌟</h1>
@@ -35,8 +35,11 @@
   </header>
 
   <main>
-    <section id="content"></section>
+    <section id="content">
+      </section>
   </main>
+  
+  <div id="product-modal" class="modal"></div>
 
   <script src="script.js"></script>
 </body>
