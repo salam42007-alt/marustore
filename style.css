@@ -1,33 +1,86 @@
+.background-gif-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-image: url('https://66.media.tumblr.com/2377dc353fee72343dc776d5ea9dcd0b/tumblr_pgyujn9pok1xioyvwo3_540.gif');
+  background-size: cover;
+  background-position: center;
+}
+
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 41, 55, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
 body {
-    font-family: sans-serif;
-    direction: rtl;
-    background: #f7f7f7;
-    margin: 0;
-    padding: 20px;
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding-top: 60px;
+  color: #fff;
 }
 
-.title {
-    text-align: center;
-    margin-bottom: 30px;
+.main-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(17,24,39,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+.tab {
+  background: none;
+  border: none;
+  color: #fff;
+  margin: 0 8px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.product {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+.tab-active {
+  color: gold;
+  border-bottom: 2px solid gold;
 }
 
-.product h2 {
-    margin: 0 0 10px;
+#content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 25px;
+  padding: 20px;
 }
 
-.product p {
-    margin: 5px 0;
+.product-card {
+  background: #374151;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 15px;
+  text-align: right;
+}
+
+.home-box {
+  background: rgba(31,41,55,0.8);
+  padding: 40px;
+  border-radius: 15px;
 }
