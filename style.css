@@ -132,7 +132,7 @@ header {
 
 /* غيّرنا الاسم هنا */
 .welcome-title::before {
-    content: "🌟";
+    content: "🌟من صنع ساره ";
 }
 
 .server-desc {
@@ -242,4 +242,5 @@ main {
 .buy-button:hover {
     background-color: #45a049;
 }
+
 
